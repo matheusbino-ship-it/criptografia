@@ -1,0 +1,41 @@
+
+import hashlib
+import base64
+
+# Função para gerar hash
+def calcula_hash(palavra):
+    resultado = hashlib.sha256(palavra.encode())
+    return resultado.hexdigest()
+
+# Função para criptografar uma mensagem
+def criptografar(mensagem):
+    mensagem_bytes = mensagem.encode()
+    mensagem_codificada = base64.b64encode(mensagem_bytes)
+    return mensagem_codificada.decode()
+
+# Função para descriptografar uma mensagem
+def descriptografar(mensagem):
+    mensagem_bytes = mensagem.encode()
+    mensagem_decodificada = base64.b64decode(mensagem_bytes)
+    return mensagem_decodificada.decode()
+
+# Testando o projeto
+texto = "Minha senha secreta"
+
+print("Mensagem original:", texto)
+
+texto_criptografado = criptografar(texto)
+print("Mensagem criptografada:", texto_criptografado)
+
+texto_original = descriptografar(texto_criptografado)
+print("Mensagem descriptografada:", texto_original)
+
+print("\nHash da mensagem:")
+print(calcula_hash(texto))
+
+# Testando colisão com palavras diferentes
+palavra1 = "amor"
+palavra2 = "roma"
+
+print("\nHash da palavra amor:", calcula_hash(palavra1))
+print("Hash da palavra roma:", calcula_hash(palavra2))

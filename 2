@@ -1,0 +1,27 @@
+
+def calcula_hash(palavra):
+    hash = 0
+
+    for letra in palavra:
+        hash += ord(letra)
+
+    return hash
+
+# Duas palavras diferentes
+palavra1 = "amor"
+palavra2 = "roma"
+
+# Calculando os hashes
+hash1 = calcula_hash(palavra1)
+hash2 = calcula_hash(palavra2)
+
+print("Palavra 1:", palavra1)
+print("Hash 1:", hash1)
+
+print("Palavra 2:", palavra2)
+print("Hash 2:", hash2)
+
+if hash1 == hash2:
+    print("Encontramos uma colisão!")
+else:
+    print("Os hashes são diferentes.")
